@@ -11,7 +11,7 @@ import os
 app = FastAPI()
 
 # Load translation model and tokenizer
-model_path = "C:/Users/DELL/Desktop/newmodel/tf_model3"
+model_path = "C:/Users/DELL/Desktop/newmodel/tf_model4"
 tokenizer = AutoTokenizer.from_pretrained(model_path)
 model = TFAutoModelForSeq2SeqLM.from_pretrained(model_path)
 
@@ -21,7 +21,7 @@ reader = easyocr.Reader(['en'], gpu=False)
 # Text-to-text translation endpoint
 class TranslationRequest(BaseModel):
     text: str
-    max_length: int = 128
+    max_length: int = 512
 
 @app.post("/translate/")
 def translate(req: TranslationRequest):
